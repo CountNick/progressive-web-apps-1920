@@ -18,8 +18,10 @@
   "homepage": "https://github.com/CountNick/progressive-web-apps-1920#readme",
   "dependencies": {
     "dotenv": "^8.2.0",
-    "ejs": "^3.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "express-hbs": "^2.3.1",
+    "handlebars": "^4.7.3",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"

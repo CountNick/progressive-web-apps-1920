@@ -1,4 +1,6 @@
 require('dotenv').config()
+const https = require('https')
+const axios = require('axios')
 const express = require('express')
 const path = require('path')
 const app = express()
@@ -18,11 +20,18 @@ app
 .use(notFound)
 
 
-
+async function getData(){
+    const data = await axios('https://rickandmortyapi.com/api/character/')
+    return data
+}
 
 //renders the login page
-function homeRoute(req, res) {
-    res.render("home.hbs");
+async function homeRoute(req, res) {
+    const data = await getData()
+    console.log('holaa', data.data.results)
+    res.render("home.hbs", {
+        data: data.data.results
+    });
   }
 
 function notFound(req, res){

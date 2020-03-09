@@ -28,9 +28,9 @@ async function getData(){
 //renders the login page
 async function homeRoute(req, res) {
     const data = await getData()
-    console.log('holaa', data.data.results)
+
     res.render("home.hbs", {
-        data: data.data.results
+        characters: data.data.results
     });
   }
 

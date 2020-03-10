@@ -7,10 +7,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const hbs = require('express-hbs');
 
-app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }));
-
-// routing
-// const homeRoute = require('./routes/home.js')
+app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }))
 
 app
     .use(bodyParser.urlencoded({ extended: true }))
@@ -24,15 +21,22 @@ app
 
 
 async function getData(query){
-    // query ? '' : query
+    
     query === undefined ? query = '' : query = query
 
     console.log('query hier: ', query)
     const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
+    
     return data
 }
 
-//renders the login page
+async function getCharacter(query){
+    query === undefined ? query = '' : query = query
+    const data = await axios(`https://rickandmortyapi.com/api/character/${query}`)
+    
+    return data
+}
+
 async function homeRoute(req, res){
     const data = await getData()
 
@@ -43,16 +47,11 @@ async function homeRoute(req, res){
 
 async function detailRoute(req, res){
     const selectedCharacter = +req.params.id.substring(1)
-    const data = await getData()
 
-    // console.log('asasasas: ', detail)
-
-    const detail = data.data.results.find(character => character.id === selectedCharacter)
-
-    console.log('hoooi', data)
+    const detail = await getCharacter(selectedCharacter)
 
     res.render('detail.hbs', {
-        characterDetail: detail
+        characterDetail: detail.data
     })
     
 }
@@ -66,14 +65,13 @@ async function searchResultsRoute(req, res){
         characters: searchResults.data.results,
         userInput: searchInput
     })
-    
+ 
 }
+
 
 function notFound(req, res){
     res.status(404).render('notFound.hbs')
 }
-
-
 
 app.listen(port, () => {
     console.log(`Dev app listening on port: ${port}`)

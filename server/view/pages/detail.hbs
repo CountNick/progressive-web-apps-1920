@@ -10,14 +10,12 @@
     <main>
         <article>            
 
-            {{#each characters}}
-                <a href="/character/:{{id}}">
                 <section>
-                    <img src="{{image}}" alt="">
-                    <h1>{{name}}</h1>
+                    <img src="{{characterDetail.image}}" alt="">
+                    <h1>{{characterDetail.name}}</h1>
+                    <h1>{{characterDetail.status}}</h1>
+                    <h1>{{characterDetail.gender}}</h1>
                 </section>
-                </a>
-            {{/each}}
 
         </article>
     </main>

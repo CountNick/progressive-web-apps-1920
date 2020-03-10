@@ -17,6 +17,7 @@ app
 .set('views', `${__dirname}/view/pages`)
 .use(express.static(path.join(__dirname, 'static')))
 .get('/', homeRoute)
+.get('/character/:id', detailRoute)
 .use(notFound)
 
 
@@ -26,13 +27,27 @@ async function getData(){
 }
 
 //renders the login page
-async function homeRoute(req, res) {
+async function homeRoute(req, res){
     const data = await getData()
 
-    res.render("home.hbs", {
+    res.render('home.hbs', {
         characters: data.data.results
     });
   }
+
+async function detailRoute(req, res){
+    const selectedCharacter = +req.params.id.substring(1)
+    const data = await getData()
+
+    const detail = data.data.results.find(character => character.id === selectedCharacter)
+
+    // console.log('hoooi', detail)
+
+    res.render('detail.hbs', {
+        characterDetail: detail
+    })
+    
+}
 
 function notFound(req, res){
     res.status(404).send('404 not found')

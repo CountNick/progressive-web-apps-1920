@@ -2,8 +2,9 @@
   "name": "progressive-web-apps-1920",
   "version": "1.0.0",
   "description": "Serverside rendering for progressive webapps at CMDA ",
-  "main": "index.js",
+  "main": "server/app.js",
   "scripts": {
+    "start": "nodemon server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

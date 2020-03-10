@@ -1,7 +1,7 @@
 require('dotenv').config()
-const https = require('https')
-const axios = require('axios')
 const express = require('express')
+const bodyParser = require('body-parser')
+const axios = require('axios')
 const path = require('path')
 const app = express()
 const port = process.env.PORT || 3000
@@ -13,16 +13,22 @@ app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }));
 // const homeRoute = require('./routes/home.js')
 
 app
+.use(bodyParser.urlencoded({ extended: true }))
 .set('view engine', 'hbs')
 .set('views', `${__dirname}/view/pages`)
 .use(express.static(path.join(__dirname, 'static')))
 .get('/', homeRoute)
 .get('/character/:id', detailRoute)
+.post('/searchResults', searchResultsRoute)
 .use(notFound)
 
 
-async function getData(){
-    const data = await axios('https://rickandmortyapi.com/api/character/')
+async function getData(query){
+    // query ? '' : query
+    query === undefined ? query = '' : query = query
+
+    console.log('query hier: ', query)
+    const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
     return data
 }
 
@@ -47,6 +53,20 @@ async function detailRoute(req, res){
         characterDetail: detail
     })
     
+}
+
+async function searchResultsRoute(req, res){
+    const searchInput = req.body.searchValue
+
+    // console.log('herro', searchInput)
+    const searchResults = await getData(searchInput)
+
+    console.log('searchResults for you man: ', searchResults.data)
+
+    res.render('home.hbs', {
+        characters: searchResults.data.results
+    })
+
 }
 
 function notFound(req, res){

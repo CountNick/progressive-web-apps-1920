@@ -13,14 +13,14 @@ app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }));
 // const homeRoute = require('./routes/home.js')
 
 app
-.use(bodyParser.urlencoded({ extended: true }))
-.set('view engine', 'hbs')
-.set('views', `${__dirname}/view/pages`)
-.use(express.static(path.join(__dirname, 'static')))
-.get('/', homeRoute)
-.get('/character/:id', detailRoute)
-.post('/searchResults', searchResultsRoute)
-.use(notFound)
+    .use(bodyParser.urlencoded({ extended: true }))
+    .set('view engine', 'hbs')
+    .set('views', `${__dirname}/view/pages`)
+    .use(express.static(path.join(__dirname, 'static')))
+    .get('/', homeRoute)
+    .get('/character/:id', detailRoute)
+    .post('/searchResults', searchResultsRoute)
+    .use(notFound)
 
 
 async function getData(query){
@@ -45,9 +45,11 @@ async function detailRoute(req, res){
     const selectedCharacter = +req.params.id.substring(1)
     const data = await getData()
 
+    // console.log('asasasas: ', detail)
+
     const detail = data.data.results.find(character => character.id === selectedCharacter)
 
-    // console.log('hoooi', detail)
+    console.log('hoooi', data)
 
     res.render('detail.hbs', {
         characterDetail: detail
@@ -57,20 +59,18 @@ async function detailRoute(req, res){
 
 async function searchResultsRoute(req, res){
     const searchInput = req.body.searchValue
-
     // console.log('herro', searchInput)
     const searchResults = await getData(searchInput)
 
-    console.log('searchResults for you man: ', searchResults.data)
-
-    res.render('home.hbs', {
-        characters: searchResults.data.results
+    res.render('searchResults.hbs', {
+        characters: searchResults.data.results,
+        userInput: searchInput
     })
-
+    
 }
 
 function notFound(req, res){
-    res.status(404).send('404 not found')
+    res.status(404).render('notFound.hbs')
 }
 
 

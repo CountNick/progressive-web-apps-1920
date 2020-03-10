@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{{> head}}
+
+<body>
+
+{{> navbar}}
+{{> search}}
+
+    <main>
+        
+        <h1>Characters with: {{userInput}}</h1>
+        <article>            
+
+            {{#each characters}}
+                <a href="/character/:{{id}}">
+                <section>
+                    <img src="{{image}}" alt="">
+                    <h1>{{name}}</h1>
+                </section>
+                </a>
+            {{/each}}
+
+        </article>
+    </main>
+
+<footer><p>Rick and morty app</p></footer>
+</body>
+
+</html>

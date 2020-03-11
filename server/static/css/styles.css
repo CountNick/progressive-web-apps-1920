@@ -43,3 +43,15 @@ footer{
     color: white;
     padding: 4%;
 }
+
+input[type='text']{
+    width: 80%;
+    padding: 2%;
+    border-style: none;
+    font-size: 2rem;
+}
+
+input[type='submit']{
+    width: 10%;
+    padding: 2%;
+}

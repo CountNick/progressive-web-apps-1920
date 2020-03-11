@@ -7,7 +7,7 @@ const app = express()
 const port = process.env.PORT || 3000
 const hbs = require('express-hbs');
 
-app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }))
+app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }));
 
 app
     .use(bodyParser.urlencoded({ extended: true }))
@@ -24,7 +24,6 @@ async function getData(query){
     
     query === undefined ? query = '' : query = query
 
-    console.log('query hier: ', query)
     const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
     
     return data

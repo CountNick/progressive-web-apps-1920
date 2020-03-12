@@ -59,12 +59,22 @@ async function searchResultsRoute(req, res){
     // console.log('herro', searchInput)
     const searchResults = await getData(searchInput)
 
-    // console.log('results: ', searchResults.data.results)
 
-    res.render('searchResults.hbs', {
-        characters: searchResults.data.results,
-        userInput: searchInput
-    })
+
+    if(req.query.async){
+        const data = await getData(req.query.query)        
+        console.log('hiiiieee', data.data.results)
+
+          res.render('results.hbs',{
+              characters: data.data.results})
+    }
+    else{
+        res.render('searchResults.hbs', {
+            characters: searchResults.data.results,
+            userInput: searchInput
+        })
+
+    }
  
 }
 

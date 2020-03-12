@@ -16,14 +16,12 @@ app
     .use(express.static(path.join(__dirname, 'static')))
     .get('/', homeRoute)
     .get('/character/:id', detailRoute)
-    .post('/searchResults', searchResultsRoute)
+    .get('/searchResults', searchResultsRoute)
     .use(notFound)
 
-
 async function getData(query){
-    
     query === undefined ? query = '' : query = query
-
+    
     const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
     
     return data
@@ -56,9 +54,12 @@ async function detailRoute(req, res){
 }
 
 async function searchResultsRoute(req, res){
-    const searchInput = req.body.searchValue
+    const searchInput = req.query.searchValue
+    // console.log('search form input: ', req.query.searchValue)
     // console.log('herro', searchInput)
     const searchResults = await getData(searchInput)
+
+    // console.log('results: ', searchResults.data.results)
 
     res.render('searchResults.hbs', {
         characters: searchResults.data.results,
@@ -66,7 +67,6 @@ async function searchResultsRoute(req, res){
     })
  
 }
-
 
 function notFound(req, res){
     res.status(404).render('notFound.hbs')

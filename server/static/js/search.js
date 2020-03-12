@@ -1,16 +1,9 @@
-console.log('js werkt!')
-
-
 
 const searchBar = document.getElementById('search')
 
-console.log('searchBar: ', searchBar)
-
-searchBar.addEventListener('input', function(event){
+searchBar.addEventListener('input', debounce((event) => {
     const userInput = event.target.value
     
-    // history.resplaceState({}, '/searchResults' + userInput)
-
 
     const url = document.querySelector('[data-search-form]').getAttribute('action')
 
@@ -21,22 +14,24 @@ searchBar.addEventListener('input', function(event){
         .then(html => {
             document.querySelector('main').innerHTML = html
         })
-
-
-    // getData(userInput)  
     
+}))
 
-})
-
-// async function getData(query){
-
-//     query === undefined ? query = '' : query = query
-//     const response = await fetch(`https://rickandmortyapi.com/api/character/?name=${query}`)
-
-//     const jsonData = await response.json()
-    
-//     console.log('data op je muil: ', jsonData)
-
-//     return data
-
-// }
+// Returns a function, that, as long as it continues to be invoked, will not
+// be triggered. The function will be called after it stops being called for
+// N milliseconds. If `immediate` is passed, trigger the function on the
+// leading edge, instead of the trailing.
+function debounce(func, wait, immediate) {
+	var timeout;
+	return function() {
+		var context = this, args = arguments;
+		var later = function() {
+			timeout = null;
+			if (!immediate) func.apply(context, args);
+		};
+		var callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) func.apply(context, args);
+	};
+};

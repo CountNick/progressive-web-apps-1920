@@ -1,4 +1,30 @@
+# Rick and morty web app
+
+![Schermafbeelding 2020-03-13 om 13 37 42](https://user-images.githubusercontent.com/47485018/76621549-f23a5980-652f-11ea-84c5-71bb76657664.png)
+
+
 # [Live demo](https://total-rickall.herokuapp.com/)
+
+## API used
+
+[Rick and morty API](https://rickandmortyapi.com/)
+
+### Downsides
+
+* The api has a maximum call rate of 100000 requests per day, this seems like a lot but when you get caught in a infinite loop you might exceed your request rate very quickly(which has happened to me)
+
+* The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
+
+# Features
+
+The app fetches data from the Rick and morty API and renders a card for every character. Users can click on these cards, which will lead them to a detailpage about the character. The detail page holds additional information like: 
+
+* Character species
+* Which planet the character is from 
+
+On the overview page users can also type the name of a character in a searchbox which results in a live search
+
+## Installation
 
 
 

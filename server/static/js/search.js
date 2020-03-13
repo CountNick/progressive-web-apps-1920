@@ -4,7 +4,6 @@ const searchBar = document.getElementById('search')
 searchBar.addEventListener('input', debounce((event) => {
     const userInput = event.target.value
     
-
     const url = document.querySelector('[data-search-form]').getAttribute('action')
 
     history.replaceState({}, '','?searchValue=' + userInput + '&async=true')

@@ -1,4 +1,3 @@
-
 const searchBar = document.getElementById('search')
 
 searchBar.addEventListener('input', debounce((event) => {

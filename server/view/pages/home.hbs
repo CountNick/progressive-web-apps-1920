@@ -17,7 +17,7 @@
 
                     <h1>{{name}}</h1>
                     <img width="100%" src="{{image}}" alt="image of {{name}}">
-                    <h2>{{species}}</h2>
+                    {{!-- <h2>{{species}}</h2> --}}
                     
                 </section>
                 </a>
@@ -30,7 +30,7 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/js/serviceWorker.js').then(function(registration) {
       // Registration was successful
-      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);//registration.update
     }, function(err) {
       // registration failed :(
       console.log('ServiceWorker registration failed: ', err);

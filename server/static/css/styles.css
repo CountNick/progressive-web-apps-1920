@@ -101,3 +101,8 @@ section{
   border-style: solid;
   border-color: black;
 }
+
+.card h1{
+
+  background: cornflowerblue;
+}

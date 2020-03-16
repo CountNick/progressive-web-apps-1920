@@ -36,10 +36,7 @@ article {
     grid-row: 1 / 4;
 } */
 
-section img{
-    width: 100%;
-    height: auto;
-}
+
 /* article a:first-child section img{
     width: 100%;
     height: auto;
@@ -55,8 +52,6 @@ section img{
 } */
 
 img{
-  max-width: 100%;
-  height: auto;
   background-color: red;
 }
 

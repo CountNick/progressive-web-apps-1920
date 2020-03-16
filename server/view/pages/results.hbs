@@ -3,9 +3,12 @@
 
             {{#each characters}}
                 <a href="/character/:{{id}}">
-                <section>
-                    <img src="{{image}}" alt="">
-                    {{!-- <h1>{{name}}</h1> --}}
+                <section class="card">
+                
+                    <h1>{{name}}</h1>
+                    <img width="300px" height="300px" src="{{image}}" alt="">
+                    <h2>{{species}}</h2>
+                
                 </section>
                 </a>
             {{/each}}

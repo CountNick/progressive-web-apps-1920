@@ -5,6 +5,18 @@
 
 # [Live demo](https://total-rickall.herokuapp.com/)
 
+# Table of contents
+
+* ### [Introduction]()
+* ### [Service-worker]()
+* ### [API]()
+* ### [Features]()
+* ### [Installation]()
+
+## Introduction
+
+This a PWA version of the app i made for the Web app from scratch course.
+
 ## API used
 
 [Rick and morty API](https://rickandmortyapi.com/)
@@ -14,6 +26,14 @@
 * The api has a maximum call rate of 100000 requests per day, this seems like a lot but when you get caught in a infinite loop you might exceed your request rate very quickly(which has happened to me)
 
 * The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
+
+### Service-worker
+
+Important things to keep in cache:
+
+* Home page
+* CSS
+
 
 # Features
 
@@ -27,7 +47,32 @@ On the overview page users can also type the name of a character in a searchbox 
 ## Installation
 
 
+```
+git clone https://github.com/CountNick/progressive-web-apps-1920.git
+```
 
+```
+cd progressive-web-apps-1920
+```
+
+```
+npm install
+```
+
+developers:
+```
+npm run start:dev
+```
+or if you just want to see the app in action on localhost:
+```
+npm start
+```
+
+open up a browser and visit the app at
+
+```
+localhost:3000
+```
 <!-- Add a link to your live demo in Github Pages 🌐-->
 
 <!-- ☝️ replace this description with a description of your own work -->

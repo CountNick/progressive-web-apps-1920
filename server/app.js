@@ -80,7 +80,7 @@ function notFound(req, res){
 }
 
 function offlineRoute(req, res){
-    res.send('You are offline man!')
+    res.render('offline.hbs')
 }
 
 app.listen(port, () => {

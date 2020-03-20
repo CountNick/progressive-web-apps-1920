@@ -5,7 +5,7 @@
 * Ik weet niet zo goed wat er verwacht word bij het tooling gedeelte van de opdracht. Ik gebruik nu webpack, en binnen webpack babel om clientside code te minifyen en om te zetten naar ES5. Alleen komt hier een hele grote file aan code uit.. ik weet niet zo goed of i het goed doen en wanneer het genoeg is? Het build script is hier te vinden: [package.json](https://github.com/CountNick/progressive-web-apps-1920/blob/master/package.json), [webpack config](https://github.com/CountNick/progressive-web-apps-1920/blob/master/webpack.config.js)
 
 * Ik weet ook niet zo goed wat er verwacht word van de serviceworker. Wanneer heb je voldoende caching toegepast? Op dit moment ben ik bezig met een offline pagina die door linkt naar pagina's die gecached zijn. Zou dat genoeg zijn of?
-[Link naar serviceworker](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/serviceWorker.js)
+[Link naar serviceworker](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/serviceWorker.js), [Link naar jobstory](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
 
 * Ik heb in mijn code dezelde progressive enhancement gebruikt als Declan, een live search. Ik heb dit alleen wel nav het voorbeeld dat door Declan gemaakt is gedaan, dus eigenlijk is de code niet echt van mij. Is het nu handiger om over te stappen op iets anders? [Dit is het stukje code waar het om gaat](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/js/search.js)
 

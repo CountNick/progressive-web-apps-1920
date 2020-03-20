@@ -4,9 +4,13 @@
   "description": "Serverside rendering for progressive webapps at CMDA ",
   "main": "index.js",
   "scripts": {
+    
+    "prestart": "npm run build",
     "start": "node server/app.js",
     "start:dev": "nodemon server/app.js",
-    "build": "webpack"
+    "prebuild": "echo I run before the build script",
+    "build": "webpack",
+    "postbuild": "echo I run after the build script"
   },
   "repository": {
     "type": "git",

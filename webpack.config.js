@@ -1,12 +1,9 @@
 const path = require('path')
 
 module.exports = {
-    entry: 
-            './server/static/js/search.js',
-    output:  { 
-        filename: 'bundle.js',
-        path: path.resolve(`${__dirname}/server/static`, 'dist')
-    },
+    watch: true,
+    mode: 'production',
+    entry: './server/static/js/search.js',
     module: {
         rules: [
             {
@@ -15,7 +12,18 @@ module.exports = {
                 use: {
                     loader: 'babel-loader'
                 }
+            },
+            {
+                test: /\.css/,
+                use: {
+                    loader: 'css-loader'
+                }
             }
         ]
-    }
+    },
+    output:  { 
+        filename: 'bundle.js',
+        path: path.resolve(`${__dirname}/server/static`, 'dist')
+    },
+    watch: false
 }

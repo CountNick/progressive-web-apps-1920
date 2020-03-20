@@ -17,6 +17,7 @@ app
     .get('/', homeRoute)
     .get('/character/:id', detailRoute)
     .get('/searchResults', searchResultsRoute)
+    .get('/offline', offlineRoute)
     .use(notFound)
 
 async function getData(query){
@@ -76,6 +77,10 @@ async function searchResultsRoute(req, res){
 
 function notFound(req, res){
     res.status(404).render('notFound.hbs')
+}
+
+function offlineRoute(req, res){
+    res.send('You are offline man!')
 }
 
 app.listen(port, () => {

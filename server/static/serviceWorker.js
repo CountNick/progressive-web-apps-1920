@@ -25,16 +25,37 @@ self.addEventListener('install', (event) => {
   self.addEventListener('fetch', (event) => {
     console.log('Fetch event: ', event.request)
 
-    if(request.method === 'GET'){
-      fetch(request).catch((error) => {
-        console.error
-      })
-    }
+    // if(request.method === 'GET'){
+    //   fetch(request).catch((error) => {
+    //     console.error
+    //   })
+    // }
+
+    // event.respondWith(
+    //   caches.match(event.request).then((response) => {
+    //     return response || fetch(event.request)
+    //   })
+    // )
 
     event.respondWith(
-      caches.match(event.request).then((response) => {
-        return response || fetch(event.request)
-      })
+        caches.match(event.request).then((cachedResponse) => {
+
+          if(cachedResponse){
+            console.log("Found in cache!")
+            return cachedResponse
+          }
+
+          return fetch(event.request)
+          .then((fetchResponse) => fetchResponse)
+          .catch((err => {
+
+            const isHTMLPage = event.request.method == "GET" && event.request.headers.get("accept").includes("text/html")
+
+            if(isHTMLPage) return caches.match("/offline")
+
+          }))
+
+        })
     )
 
   })

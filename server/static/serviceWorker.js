@@ -4,7 +4,7 @@ const CACHE_NAME = `core-cache-v${CORE_CACHE}`
 const urlsToCache = [
     '/',
     '/offline',
-    '/css/styles.css'
+    '/dist/main.css'
 ]
 
 self.addEventListener('install', (event) => {

@@ -3,11 +3,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const FixStyleOnlyEntriesPlugin = require('webpack-fix-style-only-entries')
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 
-
 module.exports = {
-    watch: true,
     mode: 'production',
-    entry: './server/static/js/search.js',
+    entry: './server/static/js/index.js',
     module: {
         rules: [
             {
@@ -18,10 +16,11 @@ module.exports = {
                 }
             },
             {
-                test: /\.css$/,
+                test: /\.scss$/,
                 use: [
                     MiniCssExtractPlugin.loader,
-                    'css-loader'
+                    'css-loader',
+                    'sass-loader'
                     ]
             }
         ]

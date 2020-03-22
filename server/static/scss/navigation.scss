@@ -1,0 +1,19 @@
+ul {
+	display: flex;
+	justify-content: space-between;
+	list-style-type: none;
+}
+li {
+	a {
+		color: $text-color;
+		text-decoration: none;
+		&:visited {
+			color: $text-color;
+			text-decoration: none;
+		}
+	}
+}
+nav {
+	background-color: $base-color;
+	padding: 1.5rem;
+}

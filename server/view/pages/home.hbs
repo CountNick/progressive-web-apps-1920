@@ -25,9 +25,13 @@
             
         </article>
 
-        <p>{{metaData.info.pages}}</p>
+        <section class="pagination">
+          <button>Previous</button>
+          <button>Next</button>
+
+        </section>
     </main>
-    <script>
+    <script defer>
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function() {
     navigator.serviceWorker.register('/serviceWorker.js')

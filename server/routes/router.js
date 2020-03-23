@@ -2,10 +2,10 @@ const api = require('../modules/api.js')
 
 async function homeRoute(req, res){
     const data = await api.getData()
-
     res.render('home.hbs', {
         characters: data.data.results,
-        metaData: data.data
+        metaData: data.data,
+        pageTitle: 'Home'
     });
   }
 
@@ -15,7 +15,8 @@ async function detailRoute(req, res){
     const detail = await api.getCharacter(selectedCharacter)
 
     res.render('detail.hbs', {
-        characterDetail: detail.data
+        characterDetail: detail.data,
+        pageTitle: detail.data.name
     })
     
 }
@@ -29,12 +30,15 @@ async function searchResultsRoute(req, res){
         const data = await api.getData(req.query.query)        
 
           res.render('results.hbs',{
-              characters: data.data.results})
+              characters: data.data.results,
+              pageTitle: 'Results'
+            })
     }
     else{
         res.render('searchResults.hbs', {
             characters: searchResults.data.results,
-            userInput: searchInput
+            userInput: searchInput,
+            pageTitle: 'Results'
         })
 
     }
@@ -42,11 +46,15 @@ async function searchResultsRoute(req, res){
 }
 
 function notFound(req, res){
-    res.status(404).render('notFound.hbs')
+    res.status(404).render('notFound.hbs', {
+        pageTitle: 'Not found'
+    })
 }
 
 function offlineRoute(req, res){
-    res.render('offline.hbs')
+    res.render('offline.hbs', {
+        pageTitle: 'Offline'
+    })
 }
 
 module.exports = { homeRoute, detailRoute, searchResultsRoute, notFound, offlineRoute}

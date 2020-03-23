@@ -51,6 +51,11 @@ Important things to keep in cache:
 * CSS
 * Offline page
 
+# To do
+
+* Add pagination
+* Gzip encoding
+
 
 # Features
 

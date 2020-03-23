@@ -1,4 +1,7 @@
 const searchBar = document.getElementById('search')
+let searchButton = document.querySelector('input[type="submit"]')
+
+searchButton.remove()
 
 searchBar.addEventListener('input', debounce((event) => {
     const userInput = event.target.value

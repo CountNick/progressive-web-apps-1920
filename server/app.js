@@ -8,9 +8,8 @@ const app = express()
 const port = process.env.PORT || 3000
 const hbs = require('express-hbs');
 
-app.engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }));
-
 app
+    .engine('hbs', hbs.express4({ partialsDir: __dirname + '/view/partials' }))
     .use(bodyParser.urlencoded({ extended: true }))
     .set('view engine', 'hbs')
     .set('views', `${__dirname}/view/pages`)

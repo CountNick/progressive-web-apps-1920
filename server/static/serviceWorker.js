@@ -50,7 +50,6 @@ self.addEventListener('install', (event) => {
           .catch((err => {
 
             const isHTMLPage = event.request.method == "GET" && event.request.headers.get("accept").includes("text/html")
-            const is
 
             if(isHTMLPage) return caches.match("/offline")
 

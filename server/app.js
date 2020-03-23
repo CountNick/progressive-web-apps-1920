@@ -1,4 +1,5 @@
 require('dotenv').config()
+const router = require('./routes/router.js')
 const express = require('express')
 const bodyParser = require('body-parser')
 const axios = require('axios')
@@ -14,75 +15,11 @@ app
     .set('view engine', 'hbs')
     .set('views', `${__dirname}/view/pages`)
     .use(express.static(path.join(__dirname, 'static')))
-    .get('/', homeRoute)
-    .get('/character/:id', detailRoute)
-    .get('/searchResults', searchResultsRoute)
-    .get('/offline', offlineRoute)
-    .use(notFound)
-
-async function getData(query){
-    query === undefined ? query = '' : query = query
-    
-    const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
-    
-    return data
-}
-
-async function getCharacter(query){
-    query === undefined ? query = '' : query = query
-    const data = await axios(`https://rickandmortyapi.com/api/character/${query}`)
-    
-    return data
-}
-
-async function homeRoute(req, res){
-    const data = await getData()
-
-    res.render('home.hbs', {
-        characters: data.data.results,
-        metaData: data.data
-    });
-  }
-
-async function detailRoute(req, res){
-    const selectedCharacter = +req.params.id.substring(1)
-
-    const detail = await getCharacter(selectedCharacter)
-
-    res.render('detail.hbs', {
-        characterDetail: detail.data
-    })
-    
-}
-
-async function searchResultsRoute(req, res){
-    const searchInput = req.query.searchValue
-
-    const searchResults = await getData(searchInput)
-
-    if(req.query.async){
-        const data = await getData(req.query.query)        
-
-          res.render('results.hbs',{
-              characters: data.data.results})
-    }
-    else{
-        res.render('searchResults.hbs', {
-            characters: searchResults.data.results,
-            userInput: searchInput
-        })
-
-    }
- 
-}
-
-function notFound(req, res){
-    res.status(404).render('notFound.hbs')
-}
-
-function offlineRoute(req, res){
-    res.render('offline.hbs')
-}
+    .get('/', router.homeRoute)
+    .get('/character/:id', router.detailRoute)
+    .get('/searchResults', router.searchResultsRoute)
+    .get('/offline', router.offlineRoute)
+    .use(router.notFound)
 
 app.listen(port, () => {
     console.log(`Dev app listening on port: ${port}`)

@@ -39,7 +39,8 @@ async function homeRoute(req, res){
     const data = await getData()
 
     res.render('home.hbs', {
-        characters: data.data.results
+        characters: data.data.results,
+        metaData: data.data
     });
   }
 

@@ -3,7 +3,9 @@ input[type="search"] {
 	width: 80%;
 	padding: 2%;
 	border-style: none;
-	font-size: 2rem;
+  font-size: 2rem;
+  background: transparent;
+  color: $text-color;
 }
 input[type="submit"] {
 	width: 10%;

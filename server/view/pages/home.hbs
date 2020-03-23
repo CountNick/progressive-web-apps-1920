@@ -10,7 +10,7 @@
 
     <main>
         <article>            
-
+            {{!-- {{log "El dato:" metaData.info}} --}}
             {{#each characters}}
                 <a href="/character/:{{id}}">
                 <section class="card">
@@ -22,8 +22,10 @@
                 </section>
                 </a>
             {{/each}}
-
+            
         </article>
+
+        <p>{{metaData.info.pages}}</p>
     </main>
     <script>
 if ('serviceWorker' in navigator) {

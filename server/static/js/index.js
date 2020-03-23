@@ -1,2 +1,2 @@
 import search from './modules/search.js'
-import '../scss/styles.scss'
+import '../../dev/scss/index.scss'

@@ -44,6 +44,8 @@ Important things to keep in cache:
 
 ## Critical rendering path
 
+### Runtime responisveness
+
 First audit without js and css minification:
 
 ![Without](https://user-images.githubusercontent.com/47485018/77414717-c20d7900-6dc1-11ea-80d7-7b9c5d0c5601.png)
@@ -52,9 +54,25 @@ After js and css minification:
 
 ![With minification](https://user-images.githubusercontent.com/47485018/77414928-06991480-6dc2-11ea-9d67-e0d74d4341a3.png)
 
+After minifying the javascript and css the Max Potential First Input Delay was drastically improved. Without the minification this took 210 ms, by minifying the js and css this was improved to 70 ms
+
 After Gzip compression:
 
 ![Gzip and minification](https://user-images.githubusercontent.com/47485018/77415000-203a5c00-6dc2-11ea-83ef-5e6e235120de.png)
+
+After adding the Gzip compression not a whole lot changed. The only thing that changed is that the Max Potential First Input Delay was now faster by 20 ms
+
+### Visual stability
+
+When a user started typing a name in the searchbar this is what happened:
+
+![reflow](https://user-images.githubusercontent.com/47485018/77424132-e3c22c80-6dd0-11ea-82d5-4e400f3c4e56.gif)
+
+I fixed this in the following manner:
+
+![reflowFix](https://user-images.githubusercontent.com/47485018/77424319-2f74d600-6dd1-11ea-8e70-128a07181dfa.gif)
+
+So now when a user starts typing a character in the searchbar the images don't dissapear and pop in anymore.
 
 
 

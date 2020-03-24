@@ -8,6 +8,8 @@
 # Table of contents
 
 * ### [Introduction](https://github.com/CountNick/progressive-web-apps-1920#introduction-1)
+* ### [API]()
+* ### [Progressive enhancement]()
 * ### [Service-worker](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
 * ### [Critical rendering path](https://github.com/CountNick/progressive-web-apps-1920#critical-rendering-path-1)
 * ### [API](https://github.com/CountNick/progressive-web-apps-1920#api-used)
@@ -27,6 +29,20 @@ This a PWA version of the app i made for the Web app from scratch course.
 * The api has a maximum call rate of 100000 requests per day, this seems like a lot but when you get caught in a infinite loop you might exceed your request rate very quickly(which has happened to me)
 
 * The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
+
+## Progressive enhancement
+
+When a user starts typing the name of a character the results are updated live on the page:
+
+![enhancement](https://user-images.githubusercontent.com/47485018/77454748-3fa0ab80-6df9-11ea-9e38-effc1ce86e47.gif)
+
+
+When javascript isn't supported users can sstill search for a charcter by clicking the searchbutton:
+
+![989efa439a596eadd8a1a9b405e33536](https://user-images.githubusercontent.com/47485018/77454992-94dcbd00-6df9-11ea-9eee-04d91f0b5051.gif)
+
+
+
 
 ## Service-worker
 

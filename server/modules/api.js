@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-async function getData(query){
+const getData = async (query) => {
     query === undefined ? query = '' : query = query
     
     const data = await axios(`https://rickandmortyapi.com/api/character/?name=${query}`)
@@ -8,7 +8,7 @@ async function getData(query){
     return data
 }
 
-async function getCharacter(query){
+const getCharacter = async (query) => {
     query === undefined ? query = '' : query = query
     const data = await axios(`https://rickandmortyapi.com/api/character/${query}`)
     

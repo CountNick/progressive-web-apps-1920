@@ -8,8 +8,8 @@
 # Table of contents
 
 * ### [Introduction](https://github.com/CountNick/progressive-web-apps-1920#introduction-1)
-* ### [Service-worker]()
-* ### [Critical rendering path]()
+* ### [Service-worker](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
+* ### [Critical rendering path](https://github.com/CountNick/progressive-web-apps-1920#critical-rendering-path-1)
 * ### [API](https://github.com/CountNick/progressive-web-apps-1920#api-used)
 * ### [Features](https://github.com/CountNick/progressive-web-apps-1920#features-1)
 * ### [Installation](https://github.com/CountNick/progressive-web-apps-1920#installation-1)

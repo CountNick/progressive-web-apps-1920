@@ -9,21 +9,24 @@
 {{> search}}
 
     <main>
-        
-        <h1>Characters with: {{userInput}}</h1>
+<main>
+    <h1>{{characters.length}} results containing: {{userInput}}</h1>
         <article>            
 
             {{#each characters}}
-                {{!-- <a href="/character/:{{id}}"> --}}
-                <section>
-                    <img class="darkui2-shimmer" width="300px" height="300px" src="{{image}}" alt="">
+                <a href="/character/:{{id}}">
+                <section class="card">
+                
                     <h1>{{name}}</h1>
+                    <img class="darkui2-shimmer" width="300px" height="300px" src="{{image}}" alt="">
+                    {{!-- <h2>{{species}}</h2> --}}
+                
                 </section>
-                {{!-- </a> --}}
+                </a>
             {{/each}}
 
         </article>
-    </main>
+</main>
 
 <footer><p>Rick and morty app</p></footer>
 </body>

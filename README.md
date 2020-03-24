@@ -1,15 +1,5 @@
 # Rick and morty web app
 
-# Waar ik graag feedback op zou krijgen:
-
-* Ik weet niet zo goed wat er verwacht word bij het tooling gedeelte van de opdracht. Ik gebruik nu webpack, en binnen webpack babel om clientside code te minifyen en om te zetten naar ES5. Alleen komt hier een hele grote file aan code uit.. ik weet niet zo goed of i het goed doen en wanneer het genoeg is? Het build script is hier te vinden: [package.json](https://github.com/CountNick/progressive-web-apps-1920/blob/master/package.json), [webpack config](https://github.com/CountNick/progressive-web-apps-1920/blob/master/webpack.config.js)
-
-* Ik weet ook niet zo goed wat er verwacht word van de serviceworker. Wanneer heb je voldoende caching toegepast? Op dit moment ben ik bezig met een offline pagina die door linkt naar pagina's die gecached zijn. Zou dat genoeg zijn of?
-[Link naar serviceworker](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/serviceWorker.js), [Link naar jobstory](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
-
-* Ik heb in mijn code dezelde progressive enhancement gebruikt als Declan, een live search. Ik heb dit alleen wel nav het voorbeeld dat door Declan gemaakt is gedaan, dus eigenlijk is de code niet echt van mij. Is het nu handiger om over te stappen op iets anders? [Dit is het stukje code waar het om gaat](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/js/search.js)
-
-
 ![Schermafbeelding 2020-03-13 om 13 37 42](https://user-images.githubusercontent.com/47485018/76621549-f23a5980-652f-11ea-84c5-71bb76657664.png)
 
 
@@ -19,6 +9,7 @@
 
 * ### [Introduction](https://github.com/CountNick/progressive-web-apps-1920#introduction-1)
 * ### [Service-worker]()
+* ### [Critical rendering path]()
 * ### [API](https://github.com/CountNick/progressive-web-apps-1920#api-used)
 * ### [Features](https://github.com/CountNick/progressive-web-apps-1920#features-1)
 * ### [Installation](https://github.com/CountNick/progressive-web-apps-1920#installation-1)
@@ -37,9 +28,9 @@ This a PWA version of the app i made for the Web app from scratch course.
 
 * The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
 
-# Service-worker
+## Service-worker
 
-### Jobstory:
+### Jobstories:
 
 When a user visits the app when his or her device is offline, he or she wants to know their device is offline.
 
@@ -51,10 +42,28 @@ Important things to keep in cache:
 * CSS
 * Offline page
 
+## Critical rendering path
+
+First audit without js and css minification:
+
+![Without](https://user-images.githubusercontent.com/47485018/77414717-c20d7900-6dc1-11ea-80d7-7b9c5d0c5601.png)
+
+After js and css minification:
+
+![With minification](https://user-images.githubusercontent.com/47485018/77414928-06991480-6dc2-11ea-9d67-e0d74d4341a3.png)
+
+After Gzip compression:
+
+![Gzip and minification](https://user-images.githubusercontent.com/47485018/77415000-203a5c00-6dc2-11ea-83ef-5e6e235120de.png)
+
+
+
 # To do
 
 * Add pagination
-* Gzip encoding
+* Gzip encoding - Check Write something about this
+* Minification - Write something about this
+* Add critical css?
 
 
 # Features

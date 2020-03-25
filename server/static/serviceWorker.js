@@ -25,18 +25,6 @@ self.addEventListener('install', (event) => {
   self.addEventListener('fetch', (event) => {
     console.log('Fetch event: ', event.request)
 
-    // if(request.method === 'GET'){
-    //   fetch(request).catch((error) => {
-    //     console.error
-    //   })
-    // }
-
-    // event.respondWith(
-    //   caches.match(event.request).then((response) => {
-    //     return response || fetch(event.request)
-    //   })
-    // )
-
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
 

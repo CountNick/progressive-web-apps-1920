@@ -7,7 +7,6 @@
     "prestart": "npm run build",
     "start": "node server/app.js",
     "start:dev": "nodemon server/app.js",
-    "prebuild": "echo I run before the build script",
     "build": "webpack",
     "watch": "webpack --watch",
     "postbuild": "echo I run after the build script"

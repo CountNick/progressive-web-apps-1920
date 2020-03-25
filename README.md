@@ -95,8 +95,6 @@ So now when a user starts typing a character in the searchbar the images don't d
 # To do
 
 * Add pagination
-* Gzip encoding - Check Write something about this
-* Minification - Write something about this
 * Add critical css?
 
 

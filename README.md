@@ -16,6 +16,8 @@
 
 * ### [Installation](https://github.com/CountNick/progressive-web-apps-1920#installation-1)
 
+* ### [Conclusion](https://github.com/CountNick/progressive-web-apps-1920#optimalisations-1)
+
 # Introduction
 
 For the course progressive web apps at CMDA we were given the assignment to make our [web app from scratch](https://github.com/CountNick/web-app-from-scratch-1920) into a progressive web app.
@@ -155,6 +157,20 @@ open up a browser and visit the app at
 ```
 localhost:3000
 ```
+
+# Conclusion
+
+**Je snapt het verschil tussen client side en server side renderen en kan server side rendering toepassen voor het tonen van data uit een API**
+
+De pagina's worden in eerste instantie en als iemand geen javascript heeft op de server gerenderd. Met het [stukje code van Declan heb ik een clientside script](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/js/modules/search.js) geschreven waar je mee kan live searchen. Er word dan clienside gerenderd met data uit de API. Er is dus wel sprake van een progressive enhancement, het komt alleen wel uit et voorbeeld van Declan. [link naar readme](https://github.com/CountNick/progressive-web-apps-1920#progressive-enhancement-1)
+
+**Je begrijpt hoe een Service Worker werkt en kan deze in jouw applicatie op een nuttige wijze implementeren.**
+
+Mijn applicatie bevat een [serviceworker](https://github.com/CountNick/progressive-web-apps-1920/blob/master/server/static/serviceWorker.js) die de homepagina, css en een offline pagina cached. Het is statisch en heel minimaal. De offline pagina word gerenderd door te kijken of het request dat verstuurd word html is. Als dit zo is  en de er geen verbinding is word de offline pagina getoond. Ik had me toch graag wat meer verdiept in de serviceworker. Ik ben best wat tijd verloren doordat ik deze in de verkeerde map had zitten. Hierna heb ik het voorbeeld van Declan erbij gepakt, dit werkte wel maar ik wist nou niet precies waarom. Ik heb daarom besloten om zelf een offline pagina te serveren en alleen de homepagina te cashen.
+
+**Je begrijpt hoe de critical render path werkt, en hoe je deze kan optimaliseren**
+
+In dit stukje laat ik zien wat ik heb verbeterd aan mijn applicatie [hier](https://github.com/CountNick/progressive-web-apps-1920#optimalisations-1). Ik heb het hier vooral over time to interaction. De optimalisaties zijn wel een beetje voor de hand liggend, en ik had naar meerdere optimalisaties kunnen kijken zoals critical css. Dit wilde ik ook nog wel toevoegen, maar had hier helaas geen tijd meer voor. Ik ben wel blij dat ik de tijd heb genomen om een keer naar webpack te kijken.
 <!-- Add a link to your live demo in Github Pages 🌐-->
 
 <!-- ☝️ replace this description with a description of your own work -->

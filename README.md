@@ -1,6 +1,6 @@
 # Rick and morty web app
 
-![Schermafbeelding 2020-03-13 om 13 37 42](https://user-images.githubusercontent.com/47485018/76621549-f23a5980-652f-11ea-84c5-71bb76657664.png)
+![Header image](https://user-images.githubusercontent.com/47485018/78006155-e971c200-733c-11ea-82d3-e279261fbd11.png)
 
 
 # [Live demo](https://total-rickall.herokuapp.com/)
@@ -18,7 +18,7 @@
 
 ## Introduction
 
-For the course progressive web apps at CMDA we were given the assignment to make our [web app from scratch]() into a progressive web app.
+For the course progressive web apps at CMDA we were given the assignment to make our [web app from scratch](https://github.com/CountNick/web-app-from-scratch-1920) into a progressive web app.
 
 
 ## API used
@@ -45,12 +45,21 @@ In order to render the right Detailpage with for every character a new api call 
 `https://rickandmortyapi.com/api/character/${number}`
 ```
 
+# Features
+
+The app fetches data from the Rick and morty API and renders a card for every character. Users can click on these cards, which will lead them to a detailpage about the character. The detail page holds additional information like: 
+
+* Character species
+* Which planet the character is from 
+
+On the overview page users can also type the name of a character in a searchbox which results in a live search
 
 
 ## Progressive enhancement
 
-When a user starts typing the name of a character the results are updated live on the page:
-** I took this piece of code from [Declan](https://github.com/decrek/progressive-web-apps-1920/blob/master/examples/movies-example/src/js/search.js)**
+When a user starts typing the name of a character the results are updated live on the page, **I took this piece of code from [Declan](https://github.com/decrek/progressive-web-apps-1920/blob/master/examples/movies-example/src/js/search.js)** :
+
+
 ![enhancement](https://user-images.githubusercontent.com/47485018/77454748-3fa0ab80-6df9-11ea-9e38-effc1ce86e47.gif)
 
 The only problem with that functionality is that it runs in the client, and not every vlient is able to run javascript.
@@ -75,7 +84,7 @@ Important things to keep in cache:
 * CSS
 * Offline page
 
-## Critical rendering path
+## Optimalisations
 
 ### Runtime responisveness
 
@@ -83,14 +92,12 @@ First audit without js and css minification:
 
 ![Without](https://user-images.githubusercontent.com/47485018/77414717-c20d7900-6dc1-11ea-80d7-7b9c5d0c5601.png)
 
-After js and css minification:
 
+Since i hear alot of people talk about Webpack i decided to try and use webpack to minify and compile my javascript and scss files. After minifying the javascript and css some things were improved:
 ![With minification](https://user-images.githubusercontent.com/47485018/77414928-06991480-6dc2-11ea-9d67-e0d74d4341a3.png)
+Ase you can see the time to interactive, and the max potential first input delay improved
 
-Since i hear alot of people talk about Webpack i decided to try and use webpack to minify and compile my javascript and scss files. After minifying the javascript and css the Max Potential First Input Delay was drastically improved. Without the minification this took 210 ms, by minifying the js and css this was improved to 70 ms.
-
-After Gzip compression:
-
+After minifying the css and javascript i also added gzip compresssion:
 ![Gzip and minification](https://user-images.githubusercontent.com/47485018/77415000-203a5c00-6dc2-11ea-83ef-5e6e235120de.png)
 
 After adding the Gzip compression not a whole lot changed. The only thing that changed is that the Max Potential First Input Delay was now faster by 20 ms
@@ -107,16 +114,11 @@ I fixed this in the following manner:
 
 So now when a user starts typing a character in the searchbar the images don't dissapear and pop in anymore.
 
+### Caching
+
+The serviceworker also caches the homepage and css. So after visiting the page for the first time the homepage will load faster as the server doesn't need to provde the page to the client anymore.
 
 
-# Features
-
-The app fetches data from the Rick and morty API and renders a card for every character. Users can click on these cards, which will lead them to a detailpage about the character. The detail page holds additional information like: 
-
-* Character species
-* Which planet the character is from 
-
-On the overview page users can also type the name of a character in a searchbox which results in a live search
 
 # Wishlist
 

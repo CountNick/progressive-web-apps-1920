@@ -8,30 +8,30 @@
 # Table of contents
 
 * ### [Introduction](https://github.com/CountNick/progressive-web-apps-1920#introduction-1)
-* ### [API]()
-* ### [Progressive enhancement]()
-* ### [Service-worker](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
-* ### [Critical rendering path](https://github.com/CountNick/progressive-web-apps-1920#critical-rendering-path-1)
 * ### [API](https://github.com/CountNick/progressive-web-apps-1920#api-used)
 * ### [Features](https://github.com/CountNick/progressive-web-apps-1920#features-1)
+* ### [Progressive enhancement](https://github.com/CountNick/progressive-web-apps-1920#progressive-enhancement-1)
+* ### [Service-worker](https://github.com/CountNick/progressive-web-apps-1920#service-worker-1)
+* ### [Optimalisations](https://github.com/CountNick/progressive-web-apps-1920#optimalisations)
+
 * ### [Installation](https://github.com/CountNick/progressive-web-apps-1920#installation-1)
 
-## Introduction
+# Introduction
 
 For the course progressive web apps at CMDA we were given the assignment to make our [web app from scratch](https://github.com/CountNick/web-app-from-scratch-1920) into a progressive web app.
 
 
-## API used
+# API used
 
 [Rick and morty API](https://rickandmortyapi.com/)
 
-### Downsides
+## Downsides
 
 * The api has a maximum call rate of 100000 requests per day, this seems like a lot but when you get caught in a infinite loop you might exceed your request rate very quickly(which has happened to me)
 
 * The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
 
-### How the app uses the API 
+## How the app uses the API 
 
 It is possible to search for characters name's within the api. This is what the search functionality is build upon: 
 
@@ -55,7 +55,7 @@ The app fetches data from the Rick and morty API and renders a card for every ch
 On the overview page users can also type the name of a character in a searchbox which results in a live search
 
 
-## Progressive enhancement
+# Progressive enhancement
 
 When a user starts typing the name of a character the results are updated live on the page, **I took this piece of code from [Declan](https://github.com/decrek/progressive-web-apps-1920/blob/master/examples/movies-example/src/js/search.js)** :
 
@@ -70,9 +70,9 @@ When javascript isn't supported users can still search for a charcter by clickin
 ![989efa439a596eadd8a1a9b405e33536](https://user-images.githubusercontent.com/47485018/77454992-94dcbd00-6df9-11ea-9eee-04d91f0b5051.gif)
 
 
-## Service-worker
+# Service-worker
 
-### Jobstories:
+## Jobstories:
 
 When a user visits the app when his or her device is offline, the user wants to see a offline page to know they are offline.
 
@@ -84,9 +84,9 @@ Important things to keep in cache:
 * CSS
 * Offline page
 
-## Optimalisations
+# Optimalisations
 
-### Runtime responisveness
+## Runtime responisveness
 
 First audit without js and css minification:
 
@@ -102,7 +102,7 @@ After minifying the css and javascript i also added gzip compresssion:
 
 After adding the Gzip compression not a whole lot changed. The only thing that changed is that the Max Potential First Input Delay was now faster by 20 ms
 
-### Visual stability
+## Visual stability
 
 When a user started typing a name in the searchbar this is what happened:
 
@@ -114,7 +114,7 @@ I fixed this in the following manner:
 
 So now when a user starts typing a character in the searchbar the images don't dissapear and pop in anymore.
 
-### Caching
+## Caching
 
 The serviceworker also caches the homepage and css. So after visiting the page for the first time the homepage will load faster as the server doesn't need to provde the page to the client anymore.
 
@@ -126,7 +126,7 @@ The serviceworker also caches the homepage and css. So after visiting the page f
 * Add caching of pages that have been visited to cache
 * Add critical css?
 
-## Installation
+# Installation
 
 
 ```

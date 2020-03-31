@@ -18,7 +18,8 @@
 
 ## Introduction
 
-This a PWA version of the app i made for the Web app from scratch course.
+For the course progressive web apps at CMDA we were given the assignment to make our [web app from scratch]() into a progressive web app.
+
 
 ## API used
 
@@ -30,25 +31,41 @@ This a PWA version of the app i made for the Web app from scratch course.
 
 * The information on characters is a little shallow. For example: there are no bio's for the characters and no images for the planets
 
+### How the app uses the API 
+
+It is possible to search for characters name's within the api. This is what the search functionality is build upon: 
+
+```js
+`https://rickandmortyapi.com/api/character/?name=${name}`
+```
+
+In order to render the right Detailpage with for every character a new api call is made with the id of said character: 
+
+```js
+`https://rickandmortyapi.com/api/character/${number}`
+```
+
+
+
 ## Progressive enhancement
 
 When a user starts typing the name of a character the results are updated live on the page:
-
+** I took this piece of code from [Declan](https://github.com/decrek/progressive-web-apps-1920/blob/master/examples/movies-example/src/js/search.js)**
 ![enhancement](https://user-images.githubusercontent.com/47485018/77454748-3fa0ab80-6df9-11ea-9e38-effc1ce86e47.gif)
 
+The only problem with that functionality is that it runs in the client, and not every vlient is able to run javascript.
+Not all users are able to load javascript in their browsers, but the search funtionaility is still the core functionaility of my app. This means that it has to be usable for everyone, with or without javascript.
 
-When javascript isn't supported users can sstill search for a charcter by clicking the searchbutton:
+When javascript isn't supported users can still search for a charcter by clicking the searchbutton:
 
 ![989efa439a596eadd8a1a9b405e33536](https://user-images.githubusercontent.com/47485018/77454992-94dcbd00-6df9-11ea-9eee-04d91f0b5051.gif)
-
-
 
 
 ## Service-worker
 
 ### Jobstories:
 
-When a user visits the app when his or her device is offline, he or she wants to know their device is offline.
+When a user visits the app when his or her device is offline, the user wants to see a offline page to know they are offline.
 
 When they know they are offline they want to be able to visit pages or content that has been saved in cache.
 
@@ -70,7 +87,7 @@ After js and css minification:
 
 ![With minification](https://user-images.githubusercontent.com/47485018/77414928-06991480-6dc2-11ea-9d67-e0d74d4341a3.png)
 
-After minifying the javascript and css the Max Potential First Input Delay was drastically improved. Without the minification this took 210 ms, by minifying the js and css this was improved to 70 ms
+Since i hear alot of people talk about Webpack i decided to try and use webpack to minify and compile my javascript and scss files. After minifying the javascript and css the Max Potential First Input Delay was drastically improved. Without the minification this took 210 ms, by minifying the js and css this was improved to 70 ms.
 
 After Gzip compression:
 
@@ -92,12 +109,6 @@ So now when a user starts typing a character in the searchbar the images don't d
 
 
 
-# To do
-
-* Add pagination
-* Add critical css?
-
-
 # Features
 
 The app fetches data from the Rick and morty API and renders a card for every character. Users can click on these cards, which will lead them to a detailpage about the character. The detail page holds additional information like: 
@@ -106,6 +117,12 @@ The app fetches data from the Rick and morty API and renders a card for every ch
 * Which planet the character is from 
 
 On the overview page users can also type the name of a character in a searchbox which results in a live search
+
+# Wishlist
+
+* Add pagination
+* Add caching of pages that have been visited to cache
+* Add critical css?
 
 ## Installation
 

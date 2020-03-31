@@ -1,3 +1,5 @@
+//Got this piece of code from Declan at: https://github.com/decrek/progressive-web-apps-1920/blob/master/examples/movies-example/src/js/search.js
+
 const searchBar = document.getElementById('search')
 let searchButton = document.querySelector('input[type="submit"]')
 
